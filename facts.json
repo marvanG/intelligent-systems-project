@@ -1,0 +1,35 @@
+{
+    "wine_facts": {
+        "1": "The world's oldest bottle of wine dates back to A.D. 325 and was found near the town of Speyer, Germany, in 1867.",
+        "2": "In Ancient Greece, a dinner host would take the first sip of wine to assure guests that the wine was not poisoned, marking the beginning of the phrase 'drinking to one's health.'",
+        "3": "Roman soldiers were often paid in wine, as it was considered a staple of daily life and a necessity for maintaining the morale of the legions."
+    },
+    "beer_facts": {
+        "1": "Beer is one of the oldest drinks humans have produced, dating back to at least the 5th millennium BC in Iran.",
+        "2": "In the Middle Ages, beer was often safer to drink than water due to the fermentation process killing harmful bacteria.",
+        "3": "The study of beer and beer-making even has an official scientific name - zythology."
+    },
+    "vodka_facts": {
+        "1": "Vodka is the most popular spirit in the US.",
+        "2": "Vodka is the most popular spirit in the US.",
+        "3": "Vodka is the most popular spirit in the US."
+    },
+    "banana_facts": {
+        "1": "The Extinct Gros Michel: The Gros Michel, also known as Big Mike, was the dominant banana variety until the 1950s. It was larger and, by some accounts, tastier than the bananas we eat today. However, it was wiped out by Panama disease, a fungal infection that decimated crops.",
+        "2": "Artificial Banana Flavor and Gros Michel: The artificial banana flavoring used in many products is said to be based on the Gros Michel. This is why some people feel that artificial banana-flavored products don\"t quite taste like the bananas we eat today, which are mostly of the Cavendish variety.",
+        "3": "Radioactive Bananas: Bananas contain a small amount of radioactive potassium-40. However, the level of radioactivity is so low that it\"s completely harmless. Eating one banana increases your daily exposure by 1 percent.",
+        "4": "Bananas Are Berries: Surprisingly, botanically speaking, bananas are classified as berries, while strawberries are not.",
+        "5": "Bananas do not grow on trees: The banana plant is classified as an arborescent (tree-like) perennial herb, and the banana itself is considered a berry. A bunch of bananas is called a hand; a single banana is a finger.",
+        "6": "Natural Mood Enhancer: Bananas contain tryptophan, an amino acid that can help boost mood and aid sleep, as well as vitamin B6, which helps with serotonin production.",
+        "7": "Floating Fruit: Bananas can float in water, which is an unusual trait among fruits.",
+        "8": "Natural Mood Enhancer: Bananas contain tryptophan, an amino acid that can help boost mood and aid sleep, as well as vitamin B6, which helps with serotonin production.",
+        "9": "Bananas Don't Grow on Trees: What looks like a banana tree is technically a large herb. The trunk is made of leaf bases.",
+        "10": "Fastest Growing Plant: The banana plant is one of the world\"s fastest-growing plants. In the right conditions, it can grow up to 0.98 inches (2.5 cm) per hour.",
+        "11": "Clone Crops: Most bananas are clones, grown from the cutting of another banana plant. This means they are genetically identical, which unfortunately makes them susceptible to the same diseases. It also means that they could all be wiped out by a single disease.",
+        "12": "World's Most Popular Fruit: Bananas are the most widely consumed fruit in the world. More than 100 billion bananas are eaten annually.",
+        "13": "The concept of bananas being radioactive due to their potassium content is a popular and interesting topic, often discussed in the context of the banana equivalent dose (BED), a whimsical measure of radiation exposure. However, the radiation in bananas is extremely low-level and primarily comes from a small amount of potassium-40, a naturally occurring isotope.",
+        "14": "Lethal Dose from Bananas: To reach a lethal dose of radiation, an enormous number of bananas would be needed. A lethal dose of radiation, often quantified as 10 sieverts (10,000 millisieverts), would require consuming about 10 million bananas in a short period. This is practically impossible, as the body cannot process that many bananas quickly enough to accumulate the lethal dose of radiation."
+    }
+
+    
+}
