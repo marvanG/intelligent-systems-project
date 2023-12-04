@@ -1,17 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Flask Website</title>
+    <title>Furhat Training Arena</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+   
 </head>
 <body>
-    <div class="container">
-        <div class="section" id="left-section">
-            <h1>Chatbot section</h1>
+    <div class = vertical-container>
+        <div id="header">
+            <button id="Home">Home</button>
+            <button id="Training">Training</button>
+            <button id="Chat">Chat</button>
+            <button id="Settings">Settings</button>
+    
         </div>
-        <div class="section" id="right-section">
-            <h1>Furhat stats</h1>
+
+        
+    
+        <div class="horizontal-container">
+            <div id="left-content">
+                <h3>Training Arena</h3>
+                <div id = chat1>
+                    <div class="vertical-container">
+                        <div class="chat-box">
+                            <p v-for="msg in convo1">[[ msg.sender ]]: [[msg.text]]</p>
+    
+                        </div>
+                        
+                        <div class="chat-input">
+                            <input type="text" class="text-box" v-model="message1">
+                            
+                            <button @click="send1()">Send</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="right-content">
+                <h3>Furhat Lab</h3>
+                <div id = chat2>
+                    <div class="vertical-container">
+                        <div class="chat-box">  
+                            <p v-for="msg in convo2">[[ msg.sender ]]: [[msg.text]]</p>
+    
+                        </div>
+                        
+                        <div class="chat-input"> 
+                            <input type="text" class="text-box" v-model="message2">
+                            
+                            <button @click="send2()">Send</button>
+                        </div>
+                    </div>
+
+                </div>
+
+    
+            </div>    
+            
+    
         </div>
+
     </div>
+
+
+    <script>
+        var chat1 = new Vue({
+             el: '#chat1',
+             data: {
+                 message1: 'Welcome to the lab!',
+                 convo1: [],
+             },
+                methods: {
+                    send1: function() {
+                        if (this.message1.trim() !== '') {
+                            this.convo1.push({text: this.message1, sender: "You"});
+                            chat2.convo2.push({text: this.message1, sender: "User"});
+                            this.message1 = '';
+                        }
+                    }
+                },
+             delimiters: ['[[', ']]'] // Change the delimiters to avoid conflict with jinja2
+        });
+
+        var chat2 = new Vue({
+             el: '#chat2',
+             data: {
+                 message2: 'Welcome to the lab!',
+                 convo2: [],
+             },
+                methods: {
+                    send2: function() {
+
+                        if (this.message2.trim() !== '') {
+                            this.convo2.push({text: this.message2, sender: "MÆCK"});
+                            chat1.convo1.push({text: this.message2, sender: "MÆCK"});
+                            this.message2 = '';
+
+                        }
+
+                    }
+                },
+             delimiters: ['[[', ']]'] // Change the delimiters to avoid conflict with jinja2
+        });
+
+       
+
+    </script>
 </body>
 </html>
