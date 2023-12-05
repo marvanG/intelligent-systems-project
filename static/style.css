@@ -51,6 +51,7 @@ button {
     display:flex;
     flex-direction: column;
     align-items: flex-start;
+    white-space: pre-wrap;
 }
 .chat-input {
     height: 30%;
@@ -58,6 +59,8 @@ button {
     margin: 5px;
     display: flex;
     justify-content: center;
+    
+
 }
 .text-box {
     width: 80%; /* Adjust width as per your layout */
@@ -74,5 +77,6 @@ button {
 }
 .chat-box {
     color: white;
+    text-align: left;
 }
 

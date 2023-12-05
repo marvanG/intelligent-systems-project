@@ -24,12 +24,17 @@
                 <div id = chat1>
                     <div class="vertical-container">
                         <div class="chat-box">
-                            <p v-for="msg in convo1">[[ msg.sender ]]: [[msg.text]]</p>
+                            <p v-for="msg in convo1">
+                                <span>[[msg.sender]]</span>
+                                <br>
+                                <span>[[msg.text]]</span>
+                            </p>
     
                         </div>
                         
                         <div class="chat-input">
-                            <input type="text" class="text-box" v-model="message1">
+                            <textarea type="text" @keydown.enter="send1()" keydown.shift.enter.prevent class="text-box" v-model="message1" placeholder="message">
+                            </textarea>
                             
                             <button @click="send1()">Send</button>
                         </div>
@@ -49,7 +54,8 @@
                         </div>
                         
                         <div class="chat-input"> 
-                            <input type="text" class="text-box" v-model="message2">
+                            <textarea type="text"  @keydown.enter="send2()" keydown.shift.enter.prevent @keypress.shift class="text-box" v-model="message2">
+                            </textarea>
                             
                             <button @click="send2()">Send</button>
                         </div>
@@ -75,10 +81,12 @@
              },
                 methods: {
                     send1: function() {
-                        if (this.message1.trim() !== '') {
+                        if (this.message1.trim() !== '' && !event.shiftKey) {
                             this.convo1.push({text: this.message1, sender: "You"});
                             chat2.convo2.push({text: this.message1, sender: "User"});
                             this.message1 = '';
+                            event.preventDefault();
+                            
                         }
                     }
                 },
@@ -94,10 +102,11 @@
                 methods: {
                     send2: function() {
 
-                        if (this.message2.trim() !== '') {
+                        if (this.message2.trim() !== '' && !event.shiftKey) {
                             this.convo2.push({text: this.message2, sender: "MÆCK"});
                             chat1.convo1.push({text: this.message2, sender: "MÆCK"});
                             this.message2 = '';
+                            event.preventDefault();
 
                         }
 
