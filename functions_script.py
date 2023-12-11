@@ -22,10 +22,12 @@ def color(color): # changes lightning color
 def listen(): # listens to user
     color("green")
     result = furhat.listen().message
+    print(f'Customer: {result}')
     color("reset")
     return result
 
 def say(message): # speaks to user
     color("blue")
     furhat.say(text = message, blocking=True)
+    print(f'MAECK: {message}')
     color("reset")
