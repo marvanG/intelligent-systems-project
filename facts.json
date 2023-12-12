@@ -29,7 +29,29 @@
         "12": "World's Most Popular Fruit: Bananas are the most widely consumed fruit in the world. More than 100 billion bananas are eaten annually.",
         "13": "The concept of bananas being radioactive due to their potassium content is a popular and interesting topic, often discussed in the context of the banana equivalent dose (BED), a whimsical measure of radiation exposure. However, the radiation in bananas is extremely low-level and primarily comes from a small amount of potassium-40, a naturally occurring isotope.",
         "14": "Lethal Dose from Bananas: To reach a lethal dose of radiation, an enormous number of bananas would be needed. A lethal dose of radiation, often quantified as 10 sieverts (10,000 millisieverts), would require consuming about 10 million bananas in a short period. This is practically impossible, as the body cannot process that many bananas quickly enough to accumulate the lethal dose of radiation."
-    }
+    },
 
+    "say_yes":{
+        "1": "Certainly sir!",
+        "2": "Absolutely!",
+        "3": "Yes",
+        "4": "It will be done!"
+    },
+
+    "say_no":{
+        "1": "Nope!",
+        "2": "That's not gonna happen",
+        "3": "How about no?",
+        "4": "Nah ah!"
+
+    },
+    "Available drinks":{
+        "1":"Beer, Vodka, Whine, Whisky, Gin, Cocktails "
+        }
+    
+    
+
+
+  
     
 }

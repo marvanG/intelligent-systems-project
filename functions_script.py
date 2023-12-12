@@ -29,3 +29,7 @@ def say(message): # speaks to user
     color("blue")
     furhat.say(text = message, blocking=True)
     color("reset")
+
+
+
+

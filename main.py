@@ -47,6 +47,7 @@ while True:
             say("Would you like another drink?")
             
         else:
+            
             say("Okay then, i will drink myself")
             sleep(1)
             say("would you like a drink now?")
