@@ -33,7 +33,7 @@
                         </div>
                         
                         <div class="chat-input">
-                            <textarea type="text" @keydown.enter="send1()" keydown.shift.enter.prevent class="text-box" v-model="message1" placeholder="message">
+                            <textarea type="text" @keydown.enter="send1()" keydown.shift.enter.prevent class="text-box" v-model="message1" placeholder="Input here">
                             </textarea>
                             
                             <button @click="send1()">Send</button>
@@ -49,12 +49,16 @@
                 <div id = chat2>
                     <div class="vertical-container">
                         <div class="chat-box">  
-                            <p v-for="msg in convo2">[[ msg.sender ]]: [[msg.text]]</p>
+                            <p v-for="msg in convo2">
+                                <span >[[msg.sender]]</span>
+                                <br>
+                                <span>[[msg.text]]</span>
+                            </p>
     
                         </div>
                         
                         <div class="chat-input"> 
-                            <textarea type="text"  @keydown.enter="send2()" keydown.shift.enter.prevent @keypress.shift class="text-box" v-model="message2">
+                            <textarea type="text"  @keydown.enter="send2()" keydown.shift.enter.prevent @keypress.shift class="text-box" v-model="message2" placeholder="Send a message">
                             </textarea>
                             
                             <button @click="send2()">Send</button>
@@ -76,16 +80,27 @@
         var chat1 = new Vue({
              el: '#chat1',
              data: {
-                 message1: 'Welcome to the lab!',
+                 message1: '',
                  convo1: [],
              },
                 methods: {
                     send1: function() {
                         if (this.message1.trim() !== '' && !event.shiftKey) {
+                            
                             this.convo1.push({text: this.message1, sender: "You"});
                             chat2.convo2.push({text: this.message1, sender: "User"});
                             this.message1 = '';
                             event.preventDefault();
+
+                            ai_response = AIquery({"inputs": this.message1});
+                            // console.log(ai_response);
+                            console.log(JSON.stringify(ai_response));
+                            // this.convo1.push({text: ai_response, sender: "MÆCK"});
+                            // chat2.convo2.push({text: ai_response, sender: "MÆCK"});
+
+
+
+                    
                             
                         }
                     }
@@ -96,7 +111,7 @@
         var chat2 = new Vue({
              el: '#chat2',
              data: {
-                 message2: 'Welcome to the lab!',
+                 message2: '',
                  convo2: [],
              },
                 methods: {
@@ -115,7 +130,24 @@
              delimiters: ['[[', ']]'] // Change the delimiters to avoid conflict with jinja2
         });
 
-       
+        // AI Llama 2 API call 
+        async function AIquery(data) {
+            const response = await fetch(
+                "https://api-inference.huggingface.co/models/meta-llama/Llama-2-70b-chat-hf",
+                {
+                    headers: { Authorization: ""}, 
+                    method: "POST",
+                    body: JSON.stringify(data),
+                }
+            );
+            const result = await response.json();
+            return result;
+        }
+
+        async function sendQuery(text) {
+            const response = await AIquery({"inputs": text});
+            document.getElementById('aiResponse').innerText = JSON.stringify(response);
+        }
 
     </script>
 </body>

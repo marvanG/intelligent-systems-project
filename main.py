@@ -17,13 +17,42 @@ users = furhat.get_users()
 print(f'\nUsers: {users}')
 furhat.attend(user = 'CLOSEST')
 
+# AI part
+import requests
+
+API_PATH = "../API_KEY.txt" # Path to your API key (create a free account on huggingface.co and generate a key)
+with open(API_PATH, 'r') as file:
+	API_KEY = file.read().strip()
+
+API_KEY = "Bearer " + API_KEY
+
+API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct"
+headers = {"Authorization": API_KEY}
+
+def query(payload):
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.json()
+
+# test query
+output = query({	
+	"inputs": "This is a roleplay. You will roleplay as MAECK (the multimodal alcohol enjoyer and company keeper) who is a funny bartender robot that can make you a drink and keep you company. Customer: Hi! \nMAECK:",
+	"parameters": {
+		"max_new_tokens": 50,
+		"stop": ["\n", "customer:", "Customer:"],
+		"temperature": 1.5,
+		"top_k": 18,
+		"return_full_text": False,
+	}
+})
+
+print(output[0]['generated_text'])
 
 # Start a conversation
 color("blue")
 say('Hello, I am Mack, your virtual bartender. Blue light means im speaking, Green listening, Yellow Thinking and red means error. What can i help you with today?')
 
 while True:
-
+    
     result = listen()
     print(f'User: {result}')
     if "drink" in result:
