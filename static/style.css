@@ -1,5 +1,5 @@
 html, body {
-    background-color: lightslategray;
+    background-color: rgb(227, 227, 228);;
     height: 110%;
     width: 100%;
 }
@@ -9,7 +9,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: 1px solid black;
+    
     margin: 5px;
     
 }
@@ -17,14 +17,14 @@ html, body {
     display: inline-block;
     width: 45%;
     margin: 5px;
-    border: 1px solid black;
+    
     text-align: center;
     
 }
 #header {
     height: 10%;
     margin: 5px;
-    border: 1px solid black;
+    
     display: flex;
     justify-content: center;
 }
@@ -33,7 +33,7 @@ html, body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    
 
 }
 button {
@@ -43,10 +43,10 @@ button {
 }
 .chat-box {
     height: 500px;
-    border: 1px solid black;
+    
     margin: 5px;
     overflow-y: scroll;
-    background-color: rgb(62, 70, 91);
+    background-color: rgb(58, 58, 66);
     padding:5px;
     display:flex;
     flex-direction: column;
@@ -55,7 +55,7 @@ button {
 }
 .chat-input {
     height: 30%;
-    border: 1px solid black;
+    
     margin: 5px;
     display: flex;
     justify-content: center;
@@ -72,11 +72,15 @@ button {
     resize: vertical; /* Allows the user to resize vertically */
     box-shadow: 0px 0px 8px #aaa; /* Optional: Adds a subtle shadow */
     overflow-y: scroll;
-    background-color: rgb(62, 70, 91);
+    background-color: rgb(79, 22, 185);
     color: white;
 }
 .chat-box {
     color: white;
     text-align: left;
 }
-
+.senderStyle {
+    color: rgb(185, 88, 22);
+    font-weight: bold;
+    font-size: larger;
+}
