@@ -25,9 +25,9 @@
                     <div class="vertical-container">
                         <div class="chat-box">
                             <p v-for="msg in convo1">
-                                <span>[[msg.sender]]</span>
+                                <span class="senderStyle">[[msg.sender]]</span>
                                 <br>
-                                <span>[[msg.text]]</span>
+                                <span class="textStyle">[[msg.text]]</span>
                             </p>
     
                         </div>
@@ -50,7 +50,7 @@
                     <div class="vertical-container">
                         <div class="chat-box">  
                             <p v-for="msg in convo2">
-                                <span >[[msg.sender]]</span>
+                                <span >[[msg.sender]]:</span>
                                 <br>
                                 <span>[[msg.text]]</span>
                             </p>
@@ -80,28 +80,23 @@
         var chat1 = new Vue({
              el: '#chat1',
              data: {
-                 message1: '',
+                 message1: 'I would like another martini please.',
                  convo1: [],
              },
                 methods: {
-                    send1: function() {
+                    send1: async function() {
                         if (this.message1.trim() !== '' && !event.shiftKey) {
                             
                             this.convo1.push({text: this.message1, sender: "You"});
                             chat2.convo2.push({text: this.message1, sender: "User"});
+                            const message = this.message1;
                             this.message1 = '';
                             event.preventDefault();
+                            response = await query(message);
+                            console.log("Response: ", response);
 
-                            ai_response = AIquery({"inputs": this.message1});
-                            // console.log(ai_response);
-                            console.log(JSON.stringify(ai_response));
-                            // this.convo1.push({text: ai_response, sender: "MÆCK"});
-                            // chat2.convo2.push({text: ai_response, sender: "MÆCK"});
-
-
-
-                    
-                            
+                            this.convo1.push({text: response, sender: "MÆCK"});
+                            chat2.convo2.push({text: response, sender: "MÆCK"});
                         }
                     }
                 },
@@ -130,25 +125,28 @@
              delimiters: ['[[', ']]'] // Change the delimiters to avoid conflict with jinja2
         });
 
-        // AI Llama 2 API call 
-        async function AIquery(data) {
-            const response = await fetch(
-                "https://api-inference.huggingface.co/models/meta-llama/Llama-2-70b-chat-hf",
-                {
-                    headers: { Authorization: ""}, 
-                    method: "POST",
-                    body: JSON.stringify(data),
+        // AI call 
+        async function query(payload) {
+            try {
+                const response = await fetch('/api/query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
-            );
-            const result = await response.json();
-            return result;
-        }
 
-        async function sendQuery(text) {
-            const response = await AIquery({"inputs": text});
-            document.getElementById('aiResponse').innerText = JSON.stringify(response);
+                const responseData = await response.json();
+                console.log("Response data: ", responseData);
+                return responseData;
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
-
     </script>
 </body>
 </html>

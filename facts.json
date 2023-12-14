@@ -76,14 +76,19 @@
         "1": "Slow down there partner, think of your blood-pressure.",
         "2": "Easy peasy lemon squeezy, dont make me come over there and wrestle with ye!.",
         "3": "Relax, it’s not the Olympics."
-    
     },
+   
+    
+    "AI_inputs": {
+        "context": "MAECK is a chatbot that can help you with your drinking habits. It can help you find the best drink for you."
+    },
+
+    
+    
 
     "no_answer":{
         "1": "Could you repeat that please?",
         "2": "I didn't quite get that"
-
-
     }
     
 }
