@@ -1,7 +1,7 @@
 from furhat_remote_api import FurhatRemoteAPI
 from time import sleep
 import random
-from functions_script import color, listen, say
+from functions_script import color, listen, say,yes,no,what_drink,no_answer
 
 # Instantiate FurhatRemoteApi
 furhat = FurhatRemoteAPI('localhost')
@@ -20,7 +20,7 @@ furhat.attend(user = 'CLOSEST')
 # AI part
 import requests
 
-API_PATH = "../API_KEY.txt" # Path to your API key (create a free account on huggingface.co and generate a key)
+API_PATH = "C:/Users/eriki/API_KEY.txt" # Path to your API key (create a free account on huggingface.co and generate a key)
 with open(API_PATH, 'r') as file:
 	API_KEY = file.read().strip()
 
@@ -49,37 +49,45 @@ print(output[0]['generated_text'])
 
 # Start a conversation
 color("blue")
-say('Hello, I am Mack, your virtual bartender. Blue light means im speaking, Green listening, Yellow Thinking and red means error. What can i help you with today?')
+#say('Hello, I am Mack, your virtual bartender. Blue light means im speaking, Green listening, Yellow Thinking and red means error. What can i help you with today?')
 
 while True:
     
     result = listen()
     print(f'User: {result}')
-    if "drink" in result:
-        say('Would you like a drink?')
+    if "drink" in result or "could" in result or "have" in result:
+        
+        yes_answer = yes()
+        say(yes_answer)
+        sleep(1)
+        say('What would you like?')
         result = listen()
         print(f'User: {result}')
         
-        if "yes" in result or "yeah" in result or "sure" in result:
+        if "yes" in result or "yeah" in result or "sure" in result or "ye" in result:
+
             say("Okay, what kind of drink would you like?")
             result = listen()
-            print(f'User: {result}')
+            result = what_drink(result)
+
+            print(f'User: {result}') 
 
             say("Okay, I will make you a " + result)
             color("yellow")
             furhat.gesture(name = "Nod")
             sleep(1)
             color("reset")
-            say("Here is your " + result)
+            say("Here is your " + result) 
             say("Enjoy!")
             sleep(1)
             say("Would you like another drink?")
             
         else:
-            
-            say("Okay then, i will drink myself")
+            non_answer = no_answer()
+            say(non_answer)
+            #say("Okay then, i will drink myself")
             sleep(1)
-            say("would you like a drink now?")
+            say("would you like something else?")
             result = listen()
             print(result)
             if "no" in result or "nope" in result or "nah" in result:
@@ -89,7 +97,7 @@ while True:
                 say("Okay, goodbye")
                 break
     else:
-        say("Huh? I am retarded, please say the word drink!")
+        say("Huh?")
 
 
     

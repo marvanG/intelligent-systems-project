@@ -35,7 +35,8 @@
         "1": "Certainly sir!",
         "2": "Absolutely!",
         "3": "Yes",
-        "4": "It will be done!"
+        "4": "It will be done!",
+        "5": "Coming right up!"
     },
 
     "say_no":{
@@ -45,9 +46,45 @@
         "4": "Nah ah!"
 
     },
-    "Available drinks":{
-        "1":"Beer, Vodka, Whine, Whisky, Gin, Cocktails "
-        }
+    "available_drinks":{
+        "1": "beer",
+        "2": "vodka",
+        "3": "whisky",
+        "4": "gin",
+        "5": "whine",
+        "6": "cocktail",
+        "7": "cranberry"
+
+        },
+
+    "sad_costumer":{
+       "1": "I can mix up a special drink to lift your spirits. Any preferences?",
+       "2": "Sometimes a good cocktail is the best remedy. How about a piña colada?",
+       "3": "If you need to talk, I'm all ears. And in the meantime, how about a drink on the house?",
+       "4": "I've got the perfect cure for a bad day—a rotebroare.",
+       "5":"Cheer up! I'll make sure your glass stays full tonight.", 
+       "6":"Here's a little pick-me-up in a glass. It always does the trick for me.",
+       "7": "You're in good company. Let me know if there's anything I can do to make your time here better.",
+       "8": "I've got a playlist that might lift your spirits. How about a drink and some good tunes?",
+       "9" : "Life can be tough, but so are you. Let's turn things around with a great drink."
+
+
+
+        },
+
+    "angry_costumer":{
+        "1": "Slow down there partner, think of your blood-pressure.",
+        "2": "Easy peasy lemon squeezy, dont make me come over there and wrestle with ye!.",
+        "3": "Relax, it’s not the Olympics."
+    
+    },
+
+    "no_answer":{
+        "1": "Could you repeat that please?",
+        "2": "I didn't quite get that"
+
+
+    }
     
 }
     
