@@ -1,9 +1,15 @@
 from furhat_remote_api import FurhatRemoteAPI
 import json
 import random
-
 from sympy import false
 import requests
+from EmotionDetector import EmotionDetector
+import cv2
+import opencv_jupyter_ui as jcv2
+from ActionUnitDetector import ActionUnitDetector
+import warnings
+
+
 
 furhat = FurhatRemoteAPI('localhost')
 # functions
@@ -144,4 +150,52 @@ def query(API_URL, headers, chat_history, input_instructions):
     }
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
+   
+    
+
+# emotion detection functions
+
+def getEmotions(emotion):
+    warnings.filterwarnings('ignore')
+    emotionDetector = EmotionDetector('DiffusionFER/DiffusionEmotion_S/dataset_sheet.csv')
+    cam = cv2.VideoCapture(0)
+    rec = True
+    auDetector = ActionUnitDetector()
+    try:
+        while True:
+            ret, frame = cam.read()
+            if not ret:
+                raise ("OpenCV found an error reading the next frame.")
+
+            (h, w, c) = frame.shape
+            display = frame
+
+            if rec:
+                cv2.circle(display, (40, 40), 10, (0, 0, 255), 6)
+                aus,faces = auDetector.detectAUImage(frame)
+                emotion[0] = emotionDetector.predict(aus)
+                for face in faces:
+                    x1 = int(face[0][0])
+                    x2 = int(face[0][2])
+                    y1 = int(face[0][1])
+                    y2 = int(face[0][3])
+                    cv2.rectangle(display, (x1, y1), (x2, y2), (0, 255, 0), 6)
+                    cv2.putText(display, emotion[0], (x1 + 20, y1 - 20), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
+
+            cv2.putText(display, "Press SPACE to toggle between recording and stopped", ((w) // 3, (8 * h) // 10),
+                        cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
+            cv2.putText(display, "Press ESC to exit", ((w) // 3, (9 * h) // 10), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255),
+                        2)
+
+            jcv2.imshow("snap", display)
+
+            key = jcv2.waitKey(1) & 0xFF
+            if key == 27:  # ESC to exit
+                break
+            elif key == 32:  # SPACE to take snap
+                rec = not rec
+
+    finally:
+        cam.release()
+        jcv2.destroyAllWindows()
         
