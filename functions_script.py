@@ -8,7 +8,7 @@ import cv2
 import opencv_jupyter_ui as jcv2
 from ActionUnitDetector import ActionUnitDetector
 import warnings
-
+import os
 
 
 furhat = FurhatRemoteAPI('localhost')
@@ -89,10 +89,44 @@ def no_answer(): #If the robot recieves no answer or answers it doesnt understan
     return random_non_answer
 
 
+#Reactions for different emotions
 
-
-#def sad_costumer():
+def sad_costumer():
+    with open('facts.json','r') as file:
+        data =json.load(file)
+    sad_reaction = random.choice(list(data["sad_costumer"].values()))
+    return sad_reaction
     
+
+def angry_costumer():
+    with open('facts.json','r') as file:
+        data =json.load(file)
+    angry_reaction = random.choice(list(data["angry_costumer"].values()))
+    return angry_reaction
+
+def surprised_costumer():
+    with open('facts.json','r') as file:
+        data =json.load(file)
+    surprised_reaction = random.choice(list(data["surprised_costumer"].values()))
+    return surprised_reaction
+
+def disgusted_costumer():
+    with open('facts.json','r') as file:
+        data =json.load(file)
+    disgusted_reaction = random.choice(list(data["disgusted_costumer"].values()))
+    return disgusted_reaction
+
+def fear_costumer():
+    with open('facts.json','r') as file:
+        data =json.load(file)
+    fear_reaction = random.choice(list(data["fear_costumer"].values()))
+    return fear_reaction
+
+def happy_costumer():
+    with open('facts.json','r') as file:
+      data =json.load(file)
+    happy_reaction = random.choice(list(data["happy_costumer"].values()))
+    return happy_reaction
 
 
 
