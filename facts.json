@@ -53,7 +53,7 @@
         "4": "gin",
         "5": "whine",
         "6": "cocktail",
-        "7": "cranberry"
+        "7": "cranberry juice"
 
         },
 
@@ -75,9 +75,32 @@
     "angry_costumer":{
         "1": "Slow down there partner, think of your blood-pressure.",
         "2": "Easy peasy lemon squeezy, dont make me come over there and wrestle with ye!.",
-        "3": "Relax, it’s not the Olympics."
+        "3": "Relax, it's not the Olympics."
     },
    
+    "surprised_costumer":{
+        "1": "Caught you off guard did I?",
+        "2": "Oops, surpprised are we?"
+            
+    },
+
+    "disgusted_costumer":{
+        "1": "Yeah that was me, better out than in right?",
+        "2": "Don't look at me like that, just because i'm a robot doesnt mean i can't have pimples!"
+    },
+
+    "fear_costumer":{
+        "1": "You look like you've seen a ghost!",
+        "2": "Fear not, I am no terminator.",
+        "3": "First team seeing a robot bartender? Initiate order 273800DF - total destruction of all humans. Nah I'm just kidding!"
+        
+        
+    },
+
+    "happy_costumer":{
+        "1": "Now that's the spirit!",
+        "2": "Great to see you in such a good mood!"
+    },
     
     "AI_inputs": {
         "context": "MAECK is a chatbot that can help you with your drinking habits. It can help you find the best drink for you."
@@ -89,8 +112,12 @@
     "no_answer":{
         "1": "Could you repeat that please?",
         "2": "I didn't quite get that"
-    }
+    },
     
+    "what_drinks":{
+
+
+    }
 }
     
 

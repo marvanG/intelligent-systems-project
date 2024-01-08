@@ -3,8 +3,10 @@ from time import sleep
 import random
 from functions_script import color, listen, say,yes,no,what_drink,no_answer
 from functions_script import color, listen, say, clean_response, get_api_key, query, getEmotions
+from functions_script import *
 from multiprocessing import Process, Manager
 import warnings
+import json
 
 
 chat_history = ""
@@ -47,7 +49,7 @@ if __name__ == '__main__':
     with open(API_PATH, 'r') as file:
         API_KEY = "Bearer " +file.read().strip()
     API_PATH = "../API_KEY.txt" # Path to your API key (create a free account on huggingface.co and generate a key)
-    #API_KEY = "Bearer " + get_api_key(API_PATH)
+    API_KEY = "Bearer " + get_api_key(API_PATH)
     print(API_KEY)
 
 
@@ -131,6 +133,7 @@ if __name__ == '__main__':
         k+=1
         user_input = listen()    
         print(f'User: {user_input}')
+        
         if (user_input.strip().lower() == "break" or user_input.strip().lower() == "quit" or user_input.strip().lower() == "exit" or user_input.strip().lower() == "bye"):
                 say("Okay then have a nice day, goodbye!")
                 break
@@ -141,6 +144,64 @@ if __name__ == '__main__':
 
     for proc in procs:
             proc.join()
+
+
+     
+     
+     
+    # # Code to be put in the while k<20 loop for testing, I am unsure how to do it atm with the emotions but it could be first
+    #             if emotion[0] == "sad":
+    #               sad_answer = sad_costumer()
+    #               say(sad_answer)
+    #               sleep(1)
+    #             elif emotion[0] == "angry":
+    #               angry= angry_costumer()
+    #               say(angry)
+    #               sleep(1)
+    #             elif emotion[0] =="surprised":
+    #              surprised = surprised_costumer()
+    #              say(surprised)
+                     #sleep(1)
+    #             elif emotion[0] == "disgusted":
+    #               disgusted = disgusted_costumer()
+    #               say(disgusted)
+                    #sleep(1)
+    #             elif emotion[0] == "fear":
+    #                 fear = fear_costumer()
+    #                 say(fear)
+                    #sleep(1)
+    #             elif emotion[0] == "happy":
+    #                  happy = happy_costumer()
+    #                  say(happy)
+    #                   sleep(1)
+
+            
+        #     # elif (user_input.strip().lower() == "drink")
+        #         say("Okay, what kind of drink would you like?")
+        #         result = listen()
+        #         result = what_drink(result)
+
+        #         print(f'User: {result}') 
+
+        #         say("Okay, I will make you a " + result)
+        #         color("yellow")
+        #         furhat.gesture(name = "Nod")
+        #         sleep(1)
+        #         color("reset")
+        #         say("Here is your " + result) 
+        #         say("Enjoy!")
+        #         sleep(1)
+        #       
+
+
+
+
+
+
+
+
+
+
 
     # while True:
         
