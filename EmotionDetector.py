@@ -35,12 +35,12 @@ class EmotionDetector():
         self.datasetVal = Data(inputs, labelsVal)
 
         try:
-            self.model = NN(20,len(np.unique(self.dataset.labels)), 512)
+            self.model = NN(20,len(np.unique(self.dataset.labels)), 256)
             self.model.load_state_dict(torch.load('best_emotion_model.pth'))
         except (OSError, IOError) as e:
             self.train(self.dataset, 'emotion')
         try:
-            self.modelVal = NN(20,len(np.unique(self.datasetVal.labels)), 128)
+            self.modelVal = NN(20,len(np.unique(self.datasetVal.labels)), 256)
             self.modelVal.load_state_dict(torch.load('best_valence_model.pth'))
         except (OSError, IOError) as e:
             self.train(self.datasetVal, 'valence')
@@ -61,8 +61,9 @@ class EmotionDetector():
         val_loader = DataLoader(dataset=val, shuffle=False, batch_size=4)
         test_loader = DataLoader(dataset=test, shuffle=False, batch_size=4)
 
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.device = "mps" if torch.backends.mps.is_available() else self.device
+        #self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        #self.device = "mps" if torch.backends.mps.is_available() else self.device
+        self.device = "cpu"
 
         loss_fn = nn.CrossEntropyLoss()
 
@@ -92,15 +93,14 @@ class EmotionDetector():
         data = data.astype('float64')
         data = torch.Tensor(data)
 
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.device = "mps" if torch.backends.mps.is_available() else self.device
         self.knn = KNN(data, data1)
         return self.knn
     
     def predict(self, aus):
         #aus = self.auDetector.detectAUImage(image)
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.device = "mps" if torch.backends.mps.is_available() else self.device
+        #self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        #self.device = "mps" if torch.backends.mps.is_available() else self.device
+        self.device = "cpu"
         with torch.no_grad():
             predictionVal = self.modelVal(torch.from_numpy(aus))
             predictionVal = predictionVal.softmax(dim=1)
