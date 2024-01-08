@@ -1,6 +1,6 @@
 from furhat_remote_api import FurhatRemoteAPI
 from time import sleep
-from functions_script import color, listen, say, clean_response, get_api_key, query, getEmotions
+from functions_script import *
 from multiprocessing import Process, Manager
 import warnings
 
@@ -61,125 +61,61 @@ if __name__ == '__main__':
     chat_history = "MAECK: Hello, I am MAECK, your virtual bartender. What can i do for you today?\n"
 
     # Start a conversation
-    color("blue")
-
-    #say('Hello, I am Mack, your virtual bartender. Blue light means im speaking, Green listening, Yellow Thinking and red means error. What can i help you with today?')
-    """
-    while True:
-        
-        result = listen()
-        print(f'User: {result}')
-        if "drink" in result or "could" in result or "have" in result:
-            
-            yes_answer = yes()
-            say(yes_answer)
-            sleep(1)
-            say('What would you like?')
-            result = listen()
-            print(f'User: {result}')
-            
-            if "yes" in result or "yeah" in result or "sure" in result or "ye" in result:
-
-                say("Okay, what kind of drink would you like?")
-                result = listen()
-                result = what_drink(result)
-
-                print(f'User: {result}') 
-
-                say("Okay, I will make you a " + result)
-                color("yellow")
-                furhat.gesture(name = "Nod")
-                sleep(1)
-                color("reset")
-                say("Here is your " + result) 
-                say("Enjoy!")
-                sleep(1)
-                say("Would you like another drink?")
-                
-            else:
-                non_answer = no_answer()
-                say(non_answer)
-                #say("Okay then, i will drink myself")
-                sleep(1)
-                say("would you like something else?")
-                result = listen()
-                print(result)
-                if "no" in result or "nope" in result or "nah" in result:
-                    say("Okay then, would you like to quit?")
-                    result = listen()
-                    print(result)
-                    say("Okay, goodbye")
-                    break
-        else:
-            say("Huh?")
-    """
-
+   
     say('Hello, I am MAECK, your virtual bartender. What can i do for you today?')
 
-    k=0
-    while k< 20:
-        k+=1
+
+    while True:
         user_input = listen()    
         print(f'User: {user_input}')
-        
-        if (user_input.strip().lower() == "break" or user_input.strip().lower() == "quit" or user_input.strip().lower() == "exit" or user_input.strip().lower() == "bye"):
-                say("Okay then have a nice day, goodbye!")
-                break
-        elif user_input.strip() != "":
-            response = AI_bot_response(user_input)
-            say(response)
-        print(emotion[0])
+
+        if (user_input.strip().lower() == "break" or user_input.strip().lower() == "quit" or user_input.strip().lower() == "exit" or user_input.strip().lower() == "stop"):
+            say("Okay then have a nice day, goodbye!")
+            break
+        if user_input.strip() != "":
+            print(f'User Emotion: {emotion[0]}')
+
+            if emotion[0] == "sad":
+                sad_answer = sad_costumer()
+                chat_history += f'MAECK: {sad_answer}\n'
+                say(sad_answer)
+                sleep(1)
+            elif emotion[0] == "angry":
+                angry_answer= angry_costumer()
+                chat_history += f'MAECK: {angry_answer}\n'
+                say(angry_answer)
+                sleep(1)
+            elif emotion[0] =="surprise":
+                surprised_answer = surprised_costumer()
+                chat_history += f'MAECK: {surprised_answer}\n'
+                say(surprised_answer)
+                sleep(1)
+            elif emotion[0] == "disgust":
+                disgusted_answer = disgusted_costumer()
+                chat_history += f'MAECK: {disgusted_answer}\n'
+                say(disgusted_answer)
+                sleep(1)
+            elif emotion[0] == "fear":
+                fear_answer = fear_costumer()
+                chat_history += f'MAECK: {fear_answer}\n'
+                say(fear_answer)
+                sleep(1)
+            elif emotion[0] == "happy":
+                happy_answer = happy_costumer()
+                chat_history += f'MAECK: {happy_answer}\n'
+                say(happy_answer)
+                sleep(1)
+
+            else:
+                response = AI_bot_response(user_input)
+                say(response)
+            
 
     for proc in procs:
             proc.join()
 
 
-     
-     
-     
-    # # Code to be put in the while k<20 loop for testing, I am unsure how to do it atm with the emotions but it could be first
-    #             if emotion[0] == "sad":
-    #               sad_answer = sad_costumer()
-    #               say(sad_answer)
-    #               sleep(1)
-    #             elif emotion[0] == "angry":
-    #               angry= angry_costumer()
-    #               say(angry)
-    #               sleep(1)
-    #             elif emotion[0] =="surprised":
-    #              surprised = surprised_costumer()
-    #              say(surprised)
-                     #sleep(1)
-    #             elif emotion[0] == "disgusted":
-    #               disgusted = disgusted_costumer()
-    #               say(disgusted)
-                    #sleep(1)
-    #             elif emotion[0] == "fear":
-    #                 fear = fear_costumer()
-    #                 say(fear)
-                    #sleep(1)
-    #             elif emotion[0] == "happy":
-    #                  happy = happy_costumer()
-    #                  say(happy)
-    #                   sleep(1)
-
-            
-        #     # elif (user_input.strip().lower() == "drink")
-        #         say("Okay, what kind of drink would you like?")
-        #         result = listen()
-        #         result = what_drink(result)
-
-        #         print(f'User: {result}') 
-
-        #         say("Okay, I will make you a " + result)
-        #         color("yellow")
-        #         furhat.gesture(name = "Nod")
-        #         sleep(1)
-        #         color("reset")
-        #         say("Here is your " + result) 
-        #         say("Enjoy!")
-        #         sleep(1)
-        #       
+              
 
 
 
