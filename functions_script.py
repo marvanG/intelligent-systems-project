@@ -8,6 +8,7 @@ import cv2
 import opencv_jupyter_ui as jcv2
 from ActionUnitDetector import ActionUnitDetector
 import warnings
+import time
 
 
 
@@ -161,6 +162,8 @@ def getEmotions(emotion):
     cam = cv2.VideoCapture(0)
     rec = True
     auDetector = ActionUnitDetector()
+    starttime = time.monotonic()
+    count = 0
     try:
         while True:
             ret, frame = cam.read()
@@ -169,18 +172,27 @@ def getEmotions(emotion):
 
             (h, w, c) = frame.shape
             display = frame
-
+            #print(time.monotonic() - starttime)
+            
             if rec:
                 cv2.circle(display, (40, 40), 10, (0, 0, 255), 6)
-                aus,faces = auDetector.detectAUImage(frame)
-                emotion[0] = emotionDetector.predict(aus)
-                for face in faces:
-                    x1 = int(face[0][0])
-                    x2 = int(face[0][2])
-                    y1 = int(face[0][1])
-                    y2 = int(face[0][3])
-                    cv2.rectangle(display, (x1, y1), (x2, y2), (0, 255, 0), 6)
-                    cv2.putText(display, emotion[0], (x1 + 20, y1 - 20), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
+                if (time.monotonic() - starttime) > 2.0:
+                    starttime = time.monotonic()
+                    aus,faces = auDetector.detectAUImage(frame)
+                    emotion[0] = emotionDetector.predict(aus)
+                    count += 1
+                if count > 0:
+                    #try:
+                    for face in faces:
+                        x1 = int(face[0][0])
+                        x2 = int(face[0][2])
+                        y1 = int(face[0][1])
+                        y2 = int(face[0][3])
+                        cv2.rectangle(display, (x1, y1), (x2, y2), (0, 255, 0), 6)
+                        cv2.putText(display, emotion[0], (x1 + 20, y1 - 20), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
+                    #except (UnboundLocalError) as e:
+                           #pass #wait another iteration
+                        
 
             cv2.putText(display, "Press SPACE to toggle between recording and stopped", ((w) // 3, (8 * h) // 10),
                         cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
