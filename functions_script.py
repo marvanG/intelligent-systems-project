@@ -52,8 +52,7 @@ def yes(): # Answers yes in random words
     random_yes_answer = random.choice(list(data['say_yes'].values()))
     return random_yes_answer
 
-random_yes_answer = yes()
-print(f"random answer : {random_yes_answer}")
+
 
 def no(): #Answers no in random words
     with open('facts.json','r') as file:
@@ -62,8 +61,7 @@ def no(): #Answers no in random words
     random_no_answer = random.choice(list(data['say_no'].values()))
     return random_no_answer
 
-random_no_answer = no()
-print(f"random no: {random_no_answer} ")    
+
 
 def what_drink(result): #Random selection of drinks
     with open('facts.json','r') as file:
@@ -71,10 +69,10 @@ def what_drink(result): #Random selection of drinks
    
     
     drinks_list = list(data['available_drinks'].values())
-    print(drinks_list)
+    # print(drinks_list)
 
     matching_drinks = [drink for drink in drinks_list if drink.lower() in result]
-    print(matching_drinks)
+    # print(matching_drinks)
     
     if matching_drinks:
        my_drink = matching_drinks[0]
@@ -129,19 +127,6 @@ def happy_costumer():
       data =json.load(file)
     happy_reaction = random.choice(list(data["happy_costumer"].values()))
     return happy_reaction
-
-
-
-#def happy_costumer():        
-
-
-
-
-
-              
-
-
-
 
 
 
