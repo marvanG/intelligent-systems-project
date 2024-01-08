@@ -94,7 +94,6 @@ def no_answer(): #If the robot recieves no answer or answers it doesnt understan
 #def sad_costumer():
     
 
-#def angry_costumer():
 
 
 #def happy_costumer():        
