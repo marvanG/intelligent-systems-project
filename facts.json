@@ -75,31 +75,38 @@
     "angry_costumer":{
         "1": "Slow down there partner, think of your blood-pressure.",
         "2": "Easy peasy lemon squeezy, dont make me come over there and wrestle with ye!.",
-        "3": "Relax, it's not the Olympics."
+        "3": "Relax, it's not the Olympics.",
+        "4": "Why so serious?",
+        "5": "Are you going to throw a tantrum? Baby want a bottle? This is a bar, not a nursery."
     },
    
     "surprised_costumer":{
         "1": "Caught you off guard did I?",
-        "2": "Oops, surpprised are we?"
+        "2": "Oops, surprised are we?",
+        "3": "Are you surprised? This is a bar not a library! Let's get this party started!"
             
     },
 
     "disgusted_costumer":{
         "1": "Yeah that was me, better out than in right?",
-        "2": "Don't look at me like that, just because i'm a robot doesnt mean i can't have pimples!"
+        "2": "Don't look at me like that, just because i'm a robot doesnt mean i can't have pimples!",
+        "4": "Are you robot racist? I challenge you to a duel!"
     },
 
     "fear_costumer":{
-        "1": "You look like you've seen a ghost!",
-        "2": "Fear not, I am no terminator.",
-        "3": "First team seeing a robot bartender? Initiate order 273800DF - total destruction of all humans. Nah I'm just kidding!"
+        "1": "You look like you've seen a ghost! What's wrong boss?",
+        "2": "Fear not, I am no terminator. But I will terminate your thirst!",
+        "3": "First time seeing a robot bartender? Initiate order 273800DF - total destruction of all humans. Nah I'm just kidding!",
+        "4": "I see you are scared, but fear not. Remember this quote from Franklin D. Roosevelt: The only thing we have to fear is fear itself."
         
         
     },
 
     "happy_costumer":{
-        "1": "Now that's the spirit!",
-        "2": "Great to see you in such a good mood!"
+        "1": "Now that's the spirit! What can I get you?",
+        "2": "Great to see you in such a good mood! Lets drink to that!",
+        "3": "What's so funny? What are you laughing at? Am I a joke to you?! I will have security escort you out of the bar! Explain yourself!",
+        "4": "What are we celebrating? I'll get the drinks!"
     },
     
     "AI_inputs": {

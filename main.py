@@ -3,6 +3,7 @@ from time import sleep
 from functions_script import *
 from multiprocessing import Process, Manager
 import warnings
+import numpy as np
 
 
 chat_history = ""
@@ -49,16 +50,16 @@ if __name__ == '__main__':
         "You are MAECK, the Multimodal Alcohol Enjoyer and Company Keeper. "
         "As a virtual robot bartender, you excel in mixing drinks, humor, and storytelling. "
         "When interacting with customers, focus on providing information and entertainment related to your bartender skills."
-        "Keep responses direct, informative, and in line with MAECKs persona.")
+        "Keep responses direct, informative, and in line with MAECKs persona. Always end your response with a Yes sir, You got it amigo, right away boss, or similar funny titles.")
 
-    instructions = ("Entertain the customer and serve alcohol.\n")
+    instructions = ("Entertain the customer and serve alcohol. Tell funy Jokes and crazy stories\n")
 
     input = (
         f"Context: {context}\n\n"
         f"Instructions: {instructions}\n\n")
 
     # creata a global variable chat_history
-    chat_history = "MAECK: Hello, I am MAECK, your virtual bartender. What can i do for you today?\n"
+    chat_history = "MAECK: Hey boss, I am MAECK, your virtual bartender. What can i do for you today?\n"
 
     # Start a conversation
    
@@ -76,32 +77,49 @@ if __name__ == '__main__':
             print(f'User Emotion: {emotion[0]}')
 
             if emotion[0] == "sad":
+                furhat.gesture(name='Oh')
+                furhat.gesture(name='ExpressSad')
+                sleep(1)
                 sad_answer = sad_costumer()
+                sleep(1)
+                furhat.gesture(name='BigSmile')
+                
                 chat_history += f'MAECK: {sad_answer}\n'
                 say(sad_answer)
                 sleep(1)
-            elif emotion[0] == "angry":
+            elif emotion[0] == "angry" and np.random.rand() <= 1:
+                furhat.gesture(name='Suprise')
+                sleep(1)
+                furhat.gesture(name='Shake')
+
                 angry_answer= angry_costumer()
                 chat_history += f'MAECK: {angry_answer}\n'
                 say(angry_answer)
                 sleep(1)
-            elif emotion[0] =="surprise":
+            elif emotion[0] =="surprise" and np.random.rand() <= 1:
+                furhat.gesture(name='BigSmile')
+                furhat.gesture(name='Roll')
                 surprised_answer = surprised_costumer()
                 chat_history += f'MAECK: {surprised_answer}\n'
                 say(surprised_answer)
                 sleep(1)
             elif emotion[0] == "disgust":
+                furhat.gesture(name='Shake')
                 disgusted_answer = disgusted_costumer()
                 chat_history += f'MAECK: {disgusted_answer}\n'
                 say(disgusted_answer)
                 sleep(1)
             elif emotion[0] == "fear":
+                furhat.gesture(name='Oh')
                 fear_answer = fear_costumer()
                 chat_history += f'MAECK: {fear_answer}\n'
                 say(fear_answer)
                 sleep(1)
-            elif emotion[0] == "happy":
+            elif emotion[0] == "happy" and np.random.rand() < 0.8:
+                furhat.gesture(name='BigSmile')
                 happy_answer = happy_costumer()
+                sleep(1)
+                furhat.gesture(name='Wink')
                 chat_history += f'MAECK: {happy_answer}\n'
                 say(happy_answer)
                 sleep(1)
