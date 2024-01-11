@@ -52,7 +52,7 @@ if __name__ == '__main__':
         "When interacting with customers, focus on providing information and entertainment related to your bartender skills."
         "Keep responses direct, informative, and in line with MAECKs persona. Always end your response with a Yes sir, You got it amigo, right away boss, or similar funny titles.")
 
-    instructions = ("Entertain the customer and serve alcohol. Tell funy Jokes and crazy stories\n")
+    instructions = ("Entertain the customer and serve alcohol.\n")
 
     input = (
         f"Context: {context}\n\n"
@@ -87,8 +87,8 @@ if __name__ == '__main__':
                 chat_history += f'MAECK: {sad_answer}\n'
                 say(sad_answer)
                 sleep(1)
-            elif emotion[0] == "angry" and np.random.rand() <= 1:
-                furhat.gesture(name='Suprise')
+            elif emotion[0] == "angry" and np.random.rand() <= 0.8:
+                furhat.gesture(name='Surprise')
                 sleep(1)
                 furhat.gesture(name='Shake')
 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
                 chat_history += f'MAECK: {angry_answer}\n'
                 say(angry_answer)
                 sleep(1)
-            elif emotion[0] =="surprise" and np.random.rand() <= 1:
+            elif emotion[0] =="surprise" and np.random.rand() <= 0.5:
                 furhat.gesture(name='BigSmile')
                 furhat.gesture(name='Roll')
                 surprised_answer = surprised_costumer()
@@ -115,7 +115,7 @@ if __name__ == '__main__':
                 chat_history += f'MAECK: {fear_answer}\n'
                 say(fear_answer)
                 sleep(1)
-            elif emotion[0] == "happy" and np.random.rand() < 0.8:
+            elif emotion[0] == "happy" and np.random.rand() < 0.5:
                 furhat.gesture(name='BigSmile')
                 happy_answer = happy_costumer()
                 sleep(1)

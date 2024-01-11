@@ -160,11 +160,11 @@ def query(API_URL, headers, chat_history, input_instructions):
     payload = {
         "inputs": ai_input,
         "parameters": {
-            "max_new_tokens": 75,
+            "max_new_tokens": 70,
             "stop": ["\n", "customer:", "Customer:", "?"],
-            "temperature": 1.1,
-            "top_k": 25,
-            "top_p": 0.98,
+            "temperature": 1,
+            "top_k": 20,
+            "top_p": 0.97,
             "return_full_text": False,
         }
     }
