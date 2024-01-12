@@ -2,6 +2,7 @@ import torch
 from feat import Detector
 import numpy as np
 
+# class to detect action units of a face in an image 
 class ActionUnitDetector():
     def __init__(self):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"

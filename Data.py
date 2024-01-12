@@ -2,6 +2,7 @@ from torch.utils.data import Dataset
 import torch
 import numpy as np
 
+# class that creates a dataset which pytorch can use to train and evaluate a convolutional neural network
 class Data(Dataset):
     def __init__(self, inputs, labels):
         super().__init__()

@@ -1,3 +1,4 @@
+# KNN structure used from https://gist.github.com/wzjoriv/7e89afc7f30761022d7747a501260fe3
 import torch
 
 class KNN():

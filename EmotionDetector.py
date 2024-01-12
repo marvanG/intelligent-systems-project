@@ -10,6 +10,7 @@ from kmeans_pytorch import kmeans, kmeans_predict
 import torch.nn.functional as F
 from KNN import KNN
 
+# class to detect emotions
 class EmotionDetector():
     def __init__(self, csvPaths):
         self.auDetector = ActionUnitDetector()
@@ -61,6 +62,7 @@ class EmotionDetector():
         val_loader = DataLoader(dataset=val, shuffle=False, batch_size=4)
         test_loader = DataLoader(dataset=test, shuffle=False, batch_size=4)
 
+        #in order to run on all machines after training only cpu is used
         #self.device = "cuda" if torch.cuda.is_available() else "cpu"
         #self.device = "mps" if torch.backends.mps.is_available() else self.device
         self.device = "cpu"
@@ -97,7 +99,6 @@ class EmotionDetector():
         return self.knn
     
     def predict(self, aus):
-        #aus = self.auDetector.detectAUImage(image)
         #self.device = "cuda" if torch.cuda.is_available() else "cpu"
         #self.device = "mps" if torch.backends.mps.is_available() else self.device
         self.device = "cpu"
