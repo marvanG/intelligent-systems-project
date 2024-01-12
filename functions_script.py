@@ -39,7 +39,6 @@ def listen(): # listens to user
     color("reset")
     return result
 
-# The funtions say, yes, no, no_answer and what_drink are early test functions, not used in the current implementation
 def say(message): # speaks to user
     color("blue")
     furhat.say(text = message, blocking=True)
