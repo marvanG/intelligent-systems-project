@@ -19,5 +19,5 @@ Welcome to MAECK, an advanced, interactive system designed to replicate the bart
 3. Store the API token as "API_KEY.txt" outside the repo.
 4. Download all the requirements.
 5. Open the furhat sdk launcher and click launch, then click "start remote API".
-6. Open a python environment like VScode and run "main".
+6. Open a python environment like VScode and run "main.py".
 

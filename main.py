@@ -6,8 +6,7 @@ import warnings
 import numpy as np
 
 
-chat_history = ""
-
+# main AI function
 def AI_bot_response(inputs):
         global chat_history
         chat_history += f'Customer: {inputs}\n'
@@ -27,13 +26,16 @@ if __name__ == '__main__':
     # set robot voice
     furhat.set_voice(name='Matthew')
 
+    # Start dual process for emotion detection
     manager = Manager()
     emotion = manager.list([''])
-
     procs = []
     proc = Process(target=getEmotions, args=(emotion,))  # instantiating without any argument
     procs.append(proc)
     proc.start()
+
+    print("Model is loading... Please wait...")
+    print("Approximate loading time: 10-15 seconds")
     sleep(10) #emotion detector takes some time to boot :/
 
     # AI part
@@ -62,10 +64,9 @@ if __name__ == '__main__':
     chat_history = "MAECK: Hey boss, I am MAECK, your virtual bartender. What can i do for you today?\n"
 
     # Start a conversation
-   
     say('Hello, I am MAECK, your virtual bartender. What can i do for you today?')
 
-
+    # Main furhat loop
     while True:
         user_input = listen()    
         print(f'User: {user_input}')
@@ -75,7 +76,8 @@ if __name__ == '__main__':
             break
         if user_input.strip() != "":
             print(f'User Emotion: {emotion[0]}')
-
+            
+            # 7 functions for the 7 emotions
             if emotion[0] == "sad":
                 furhat.gesture(name='Oh')
                 furhat.gesture(name='ExpressSad')

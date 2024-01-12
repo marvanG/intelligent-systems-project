@@ -89,8 +89,8 @@ def no_answer(): #If the robot recieves no answer or answers it doesnt understan
     return random_non_answer
 
 
-#Reactions for different emotions
-
+# Reactions for different emotions
+# Randomly selects a reaction from the json file
 def sad_costumer():
     with open('facts.json','r') as file:
         data =json.load(file)
@@ -135,6 +135,7 @@ def get_api_key(file_path):
     with open(file_path, 'r') as file:
         return file.read().strip()
     
+# Take the ouput from the AI and clean it up
 def clean_response(response):
 
     print(f'\nResponse: {response}\n')
@@ -147,13 +148,14 @@ def clean_response(response):
         response = "No response"
     return response
 
+# Send the user input to the AI and get a response
 def query(API_URL, headers, chat_history, input_instructions):
     chat_history
     chat_history_list = chat_history.split('\n')
     if len(chat_history_list) > 10:
         chat_history_list = chat_history_list[-10:]
     
-    last_10_lines = '\n'.join(chat_history_list)
+    last_10_lines = '\n'.join(chat_history_list) # Get the last 10 lines of the chat history
 
     ai_input = f"{input_instructions + last_10_lines}MAECK:"
     print(f'ai input: {ai_input}')
