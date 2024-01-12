@@ -94,10 +94,9 @@
     },
 
     "fear_costumer":{
-        "1": "You look like you've seen a ghost! What's wrong boss?",
-        "2": "Fear not, I am no terminator. But I will terminate your thirst!",
-        "3": "First time seeing a robot bartender? Initiate order 273800DF - total destruction of all humans. Nah I'm just kidding!",
-        "4": "I see you are scared, but fear not. Remember this quote from Franklin D. Roosevelt: The only thing we have to fear is fear itself."
+        "1": "You look like you've seen a ghost!",
+        "2": "Fear not, I am no terminator.",
+        "3": "First team seeing a robot bartender? Initiate order 273800DF - total destruction of all humans. Nah I'm just kidding!"
         
         
     },
@@ -114,17 +113,15 @@
     },
 
     
-    
-
     "no_answer":{
         "1": "Could you repeat that please?",
         "2": "I didn't quite get that"
-    },
-    
-    "what_drinks":{
-
-
     }
+    
+
+    
+
+    
 }
     
 
